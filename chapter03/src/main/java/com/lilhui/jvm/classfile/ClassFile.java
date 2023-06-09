@@ -95,31 +95,11 @@ public class ClassFile {
     }
 
     private void parseFields(BytecodeReader reader) {
-        fields = newFields(reader, constantPool);
-    }
-
-    private Field[] newFields(BytecodeReader reader, ConstantPool constantPool) {
-        short fileCount = reader.readU2();
-        Field[] fields = new Field[fileCount];
-        for (int i=0; i<fileCount; i++) {
-            fields[i] = new Field(constantPool);
-            fields[i].readInfo(reader);
-        }
-        return fields;
+        fields = MemberInfos.newFields(reader, constantPool);
     }
 
     private void parseMethods(BytecodeReader reader) {
-        methods = newMethods(reader, constantPool);
-    }
-
-    private Method[] newMethods(BytecodeReader reader, ConstantPool constantPool) {
-        short methodCount = reader.readU2();
-        Method[] methods = new Method[methodCount];
-        for (int i=0; i<methodCount; i++) {
-            methods[i] = new Method(constantPool);
-            methods[i].readInfo(reader);
-        }
-        return methods;
+        methods = MemberInfos.newMethods(reader, constantPool);
     }
 
     private void parseAttributes(BytecodeReader reader) {

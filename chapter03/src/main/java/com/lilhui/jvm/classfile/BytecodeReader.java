@@ -39,10 +39,7 @@ public class BytecodeReader {
         return (high << 32) | low;
     }
 
-
-
     // Public methods for reading different data types
-
     public byte readU1() {
         return readByte();
     }

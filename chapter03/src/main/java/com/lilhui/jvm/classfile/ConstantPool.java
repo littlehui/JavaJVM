@@ -17,7 +17,7 @@ public class ConstantPool {
         int constantPoolCount = reader.readU2();
         constantPool = new ConstantInfo[constantPoolCount];
         for (int i = 1; i < constantPoolCount; i++) {
-            ConstantInfo constantInfo = ConstantInfoFactory.newConstantInfo(reader, this);
+            ConstantInfo constantInfo = ConstantInfos.newConstantInfo(reader, this);
             constantInfo.readInfo(reader);
             constantPool[i] = (constantInfo);
 

@@ -2,7 +2,8 @@ package com.lilhui.jvm.classfile;
 
 import lombok.Getter;
 
-public class ConstantInfoFactory {
+public class ConstantInfos {
+
     public static ConstantInfo newConstantInfo(BytecodeReader bytecodeReader, ConstantPool constantPool) {
         byte tag = bytecodeReader.readU1();
         switch (tag) {
