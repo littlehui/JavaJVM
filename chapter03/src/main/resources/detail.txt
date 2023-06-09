@@ -1,0 +1,166 @@
+版本：52.0
+Constant pool: 59
+#1 = Methodref          #6:44           java/lang/Object.<init>:()V
+#2 = Fieldref           #45:46          java/lang/System.out:Ljava/io/PrintStream;
+#3 = String             #47             Hello, World!
+#4 = Methodref          #48:49          java/io/PrintStream.println:(Ljava/lang/String;)V
+#5 = Class              #50             jvmgo/book/ch03/ClassFileTest
+#6 = Class              #51             java/lang/Object
+#7 = Utf8                FLAG
+#8 = Utf8                Z
+#9 = Utf8                ConstantValue
+#10 = Integer            1
+#11 = Utf8               BYTE
+#12 = Utf8               B
+#13 = Integer            123
+#14 = Utf8               X
+#15 = Utf8               C
+#16 = Integer            88
+#17 = Utf8               SHORT
+#18 = Utf8               S
+#19 = Integer            12345
+#20 = Utf8               INT
+#21 = Utf8               I
+#22 = Integer            123456789
+#23 = Utf8               LONG
+#24 = Utf8               J
+#25 = Long               12345678901
+#27 = Utf8               PI
+#28 = Utf8               F
+#29 = Float              3.14
+#30 = Utf8               E
+#31 = Utf8               D
+#32 = Double             2.71828
+#34 = Utf8               <init>
+#35 = Utf8               ()V
+#36 = Utf8               Code
+#37 = Utf8               LineNumberTable
+#38 = Utf8               main
+#39 = Utf8               ([Ljava/lang/String;)V
+#40 = Utf8               Exceptions
+#41 = Class             #52             java/lang/RuntimeException
+#42 = Utf8               SourceFile
+#43 = Utf8               ClassFileTest.java
+#44 = NameAndType               #34:35          <init>:()V
+#45 = Class             #53             java/lang/System
+#46 = NameAndType               #54:55          out:Ljava/io/PrintStream;
+#47 = Utf8               Hello, World!
+#48 = Class             #56             java/io/PrintStream
+#49 = NameAndType               #57:58          println:(Ljava/lang/String;)V
+#50 = Utf8               jvmgo/book/ch03/ClassFileTest
+#51 = Utf8               java/lang/Object
+#52 = Utf8               java/lang/RuntimeException
+#53 = Utf8               java/lang/System
+#54 = Utf8               out
+#55 = Utf8               Ljava/io/PrintStream;
+#56 = Utf8               java/io/PrintStream
+#57 = Utf8               println
+#58 = Utf8               (Ljava/lang/String;)V
+flags: 33
+this_class: #5
+Class           #50             jvmgo/book/ch03/ClassFileTest
+super_class: #6
+Class           #51             java/lang/Object
+interfaces: 0
+fields: 8
+#0{
+access_flags:25
+name_index:#7           FLAG
+descriptor_index:#8             Z
+attributes:#1
+#0{ConstantValue:               #10
+}
+}
+#1{
+access_flags:25
+name_index:#11          BYTE
+descriptor_index:#12            B
+attributes:#1
+#0{ConstantValue:               #13
+}
+}
+#2{
+access_flags:25
+name_index:#14          X
+descriptor_index:#15            C
+attributes:#1
+#0{ConstantValue:               #16
+}
+}
+#3{
+access_flags:25
+name_index:#17          SHORT
+descriptor_index:#18            S
+attributes:#1
+#0{ConstantValue:               #19
+}
+}
+#4{
+access_flags:25
+name_index:#20          INT
+descriptor_index:#21            I
+attributes:#1
+#0{ConstantValue:               #22
+}
+}
+#5{
+access_flags:25
+name_index:#23          LONG
+descriptor_index:#24            J
+attributes:#1
+#0{ConstantValue:               #25
+}
+}
+#6{
+access_flags:25
+name_index:#27          PI
+descriptor_index:#28            F
+attributes:#1
+#0{ConstantValue:               #29
+}
+}
+#7{
+access_flags:25
+name_index:#30          E
+descriptor_index:#31            D
+attributes:#1
+#0{ConstantValue:               #32
+}
+}
+methods: 2
+#0{
+access_flags:1
+name_index:#34          <init>
+descriptor_index:#35            ()V
+attributes:#1
+#0{Code:
+        stack=1, locals=1
+        code: [42 183 0 1 177]
+        exception_table: 0
+attributes: 1
+        #0{
+LineNumberTable
+}
+}
+}
+#1{
+access_flags:9
+name_index:#38          main
+descriptor_index:#39            ([Ljava/lang/String;)V
+attributes:#2
+#0{Code:
+        stack=2, locals=1
+        code: [178 0 2 18 3 182 0 4 177]
+        exception_table: 0
+attributes: 1
+        #0{
+LineNumberTable
+}
+}
+#1{Exceptions: 1
+#0              41}
+}
+attributes: 1
+#0{
+SourceFile:             #43
+}

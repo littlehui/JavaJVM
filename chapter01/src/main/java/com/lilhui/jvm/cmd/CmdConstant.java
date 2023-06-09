@@ -6,7 +6,7 @@ package com.lilhui.jvm.cmd;
  * @description TODO
  * @date 2023/5/23 17:28
  */
-public class CommandConstant {
+public class CmdConstant {
 
     public static final String OPTION_HELP = "-help";
 
@@ -17,4 +17,7 @@ public class CommandConstant {
     public static final String OPTION_CP_SHOT = "-cp";
 
     public static final String OPTION_HELP_SHOT = "?";
+
+    public static final String OPTION_X_JRE = "-Xjre";
+
 }
