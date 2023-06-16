@@ -13,7 +13,7 @@ public class MyObject {
     public double instanceVar;
 
     public static void main(String[] args) {
-        double x = 32768d; // ldc
+        double x = 6100000032768d; // ldc
         MyObject myObj = new MyObject(); // new
         MyObject.staticVar = x; // putstatic
         x = MyObject.staticVar; // getstatic
