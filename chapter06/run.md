@@ -7,7 +7,7 @@
 2. Object的超类是null。
 3. 初始化运行时ConstantPool会报 java.lang.StackOverflowError原因是用的lombok重写了toString方法。导致 ContantPool和constant。在初始化ContantPool发生了递归调用。
 4. readU1是读取无符号byte。需要用short来表示。
-
+5. DUP指令在实现的时候pop出来的slot需要进行clone，再进行push。否则push进去的是2个相同的对象。后面会有问题。
 ## 执行过程
 
 ```

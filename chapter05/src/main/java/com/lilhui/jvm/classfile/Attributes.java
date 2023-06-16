@@ -60,6 +60,7 @@ public class Attributes {
         @Override
         public void readInfo(BytecodeReader reader) {
             reader.readU4();
+            //long和double是分开写。可能超过maxStack
             maxStack = reader.readU2();
             maxLocals = reader.readU2();
             int codeLength = reader.readU4();

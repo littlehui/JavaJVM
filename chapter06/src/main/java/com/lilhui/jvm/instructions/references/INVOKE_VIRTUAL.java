@@ -43,7 +43,7 @@ public class INVOKE_VIRTUAL extends U2IndexInstruction {
                     System.out.printf("%f%n", stack.popFloat());
                     break;
                 case "(D)V":
-                    System.out.printf("%f%n", stack.popDouble());
+                    System.out.printf(stack.popDouble() + "");
                     break;
                 case "(Ljava/lang/String;)V":
                     System.out.printf("%s%n", stack.popRef());

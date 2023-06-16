@@ -13,4 +13,11 @@ import lombok.Data;
 public class Slot {
     long num;
     Object ref;
+
+    public Slot dupSlot() {
+        Slot dumpSlot = new Slot();
+        dumpSlot.setNum(this.getNum());
+        dumpSlot.setRef(this.getRef());
+        return dumpSlot;
+    }
 }

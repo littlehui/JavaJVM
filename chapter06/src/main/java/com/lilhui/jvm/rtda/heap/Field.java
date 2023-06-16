@@ -4,6 +4,8 @@ import com.lilhui.jvm.classfile.Attributes;
 import com.lilhui.jvm.classfile.FieldInfo;
 import com.lilhui.jvm.classfile.MemberInfo;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author littlehui
@@ -11,7 +13,8 @@ import lombok.Data;
  * @description TODO
  * @date 2023/6/13 14:55
  */
-@Data
+@Getter
+@Setter
 public class Field extends ClassMember {
 
     private int slotId;

@@ -39,7 +39,7 @@ public class Constants {
         @Override
         public void execute(Frame frame) {
             OPStack stack = frame.getOpStack();
-            stack.pushDouble(0.0);
+            stack.pushDouble(0.0d);
         }
     }
 
@@ -49,7 +49,7 @@ public class Constants {
         @Override
         public void execute(Frame frame) {
             OPStack stack = frame.getOpStack();
-            stack.pushDouble(1.0);
+            stack.pushDouble(1.0d);
         }
     }
 

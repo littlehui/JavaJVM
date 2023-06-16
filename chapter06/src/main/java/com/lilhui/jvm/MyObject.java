@@ -8,18 +8,17 @@ package com.lilhui.jvm;
  */
 public class MyObject {
 
-    public static int staticVar;
+    public static double staticVar;
 
-    public int instanceVar;
+    public double instanceVar;
 
     public static void main(String[] args) {
-        int x = 32768; // ldc
+        double x = 32768d; // ldc
         MyObject myObj = new MyObject(); // new
         MyObject.staticVar = x; // putstatic
         x = MyObject.staticVar; // getstatic
         myObj.instanceVar = x; // putfield
         x = myObj.instanceVar; // getfield
-        myObj.instanceVar--;
         Object obj = myObj;
         if (obj instanceof MyObject) { // instanceof
             myObj = (MyObject) obj; // checkcast

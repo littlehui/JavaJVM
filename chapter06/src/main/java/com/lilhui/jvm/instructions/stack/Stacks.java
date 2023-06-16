@@ -4,6 +4,7 @@ import com.lilhui.jvm.instructions.base.NoOperandsInstruction;
 import com.lilhui.jvm.rtda.Frame;
 import com.lilhui.jvm.rtda.OPStack;
 import com.lilhui.jvm.rtda.Slot;
+import com.lilhui.jvm.rtda.heap.constant.FieldRef;
 
 /**
  * @author littlehui
@@ -62,8 +63,9 @@ bottom -> top
         public void execute(Frame frame) {
             OPStack stack = frame.getOpStack();
             Slot slot = stack.popSlot();
+            //判断是否是double或者long
             stack.pushSlot(slot);
-            stack.pushSlot(slot);
+            stack.pushSlot(slot.dupSlot());
         }
     }
 
@@ -84,7 +86,7 @@ bottom -> top
             Slot slot2 = stack.popSlot();
             stack.pushSlot(slot1);
             stack.pushSlot(slot2);
-            stack.pushSlot(slot1);
+            stack.pushSlot(slot1.dupSlot());
         }
     }
 
@@ -107,7 +109,7 @@ bottom -> top
             stack.pushSlot(slot1);
             stack.pushSlot(slot3);
             stack.pushSlot(slot2);
-            stack.pushSlot(slot1);
+            stack.pushSlot(slot1.dupSlot());
         }
     }
 
@@ -128,8 +130,8 @@ bottom -> top
             Slot slot2 = stack.popSlot();
             stack.pushSlot(slot2);
             stack.pushSlot(slot1);
-            stack.pushSlot(slot2);
-            stack.pushSlot(slot1);
+            stack.pushSlot(slot2.dupSlot());
+            stack.pushSlot(slot1.dupSlot());
         }
     }
 
@@ -152,8 +154,8 @@ bottom -> top
             stack.pushSlot(slot2);
             stack.pushSlot(slot1);
             stack.pushSlot(slot3);
-            stack.pushSlot(slot2);
-            stack.pushSlot(slot1);
+            stack.pushSlot(slot2.dupSlot());
+            stack.pushSlot(slot1.dupSlot());
         }
     }
 
@@ -178,8 +180,8 @@ bottom -> top
             stack.pushSlot(slot1);
             stack.pushSlot(slot4);
             stack.pushSlot(slot3);
-            stack.pushSlot(slot2);
-            stack.pushSlot(slot1);
+            stack.pushSlot(slot2.dupSlot());
+            stack.pushSlot(slot1.dupSlot());
         }
     }
 

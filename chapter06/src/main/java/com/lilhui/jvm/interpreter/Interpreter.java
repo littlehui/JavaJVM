@@ -26,7 +26,7 @@ public class Interpreter {
         try {
             run(thread, method.getCode());
         } catch (Throwable throwable) {
-            //throwable.printStackTrace();
+            throwable.printStackTrace();
             //catchErr(frame, throwable);
         }
     }

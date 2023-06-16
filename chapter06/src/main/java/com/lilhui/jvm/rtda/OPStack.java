@@ -59,6 +59,9 @@ public class OPStack {
 
         index = size;
         size++;
+        if (slots.length < size) {
+            expand();
+        }
         slots[index].num = (long) low;
     }
 
