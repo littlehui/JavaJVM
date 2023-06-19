@@ -20,8 +20,11 @@ public class InterfaceMethodRef extends MemberRef {
         super();
         setConstantPool(cp);
         setClassName(interfaceMethodInfo.getClassName());
-        setName(interfaceMethodInfo.getNameAndType());
-        setDescriptor("");
+        String nameAndType = interfaceMethodInfo.getNameAndType();
+        String name = nameAndType.substring(0, nameAndType.indexOf("("));
+        String descriptor = nameAndType.substring(nameAndType.indexOf("("));
+        setName(name);
+        setDescriptor(descriptor);
     }
 
     public Method resolvedInterfaceMethod() {

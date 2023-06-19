@@ -332,17 +332,17 @@ public class Instructions {
             case 0xab:
                 return new LOOKUP_SWITCH();
             case 0xac:
-                //return new IRETURN();
+                return new IRETURN();
             case 0xad:
-                //return new LRETURN();
+                return new LRETURN();
             case 0xae:
-                //return new FRETURN();
+                return new FRETURN();
             case 0xaf:
-                //return new DRETURN();
+                return new DRETURN();
             case 0xb0:
-                //return new ARETURN();
+                return new ARETURN();
             case 0xb1:
-                //return new RETURN();
+                return new RETURN();
             case 0xb2:
                 return new GET_STATIC();
             case 0xb3:
@@ -356,9 +356,9 @@ public class Instructions {
             case 0xb7:
                 return new INVOKE_SPECIAL();
             case 0xb8:
-                //return new INVOKE_STATIC();
+                return new INVOKE_STATIC();
             case 0xb9:
-                //return new INVOKE_INTERFACE();
+                return new INVOKE_INTERFACE();
             case 0xbb:
                 return new NEW();
             case 0xbc:

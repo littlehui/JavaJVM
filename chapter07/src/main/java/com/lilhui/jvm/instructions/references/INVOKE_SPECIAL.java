@@ -31,7 +31,7 @@ public class INVOKE_SPECIAL extends U2IndexInstruction {
         if (resolvedMethod.isStatic()) {
             throw new IncompatibleClassChangeError();
         }
-        Object ref = frame.getOpStack().getRefFromTop(resolvedMethod.getArgSlotCount());
+        Object ref = frame.getOpStack().getRefFromTop(resolvedMethod.getArgSlotCount() - 1);
 
         if (ref == null) {
             throw new NullPointerException();

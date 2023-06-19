@@ -19,9 +19,18 @@ public class MethodInvokeLogic {
         thread.pushFrame(newFrame);
         int argsSlotsCount = method.getArgSlotCount();
         if (argsSlotsCount > 0) {
-            for (int i=argsSlotsCount - 1; i>0; i--) {
+            for (int i=argsSlotsCount - 1; i>=0; i--) {
                 Slot slot = invokerFrame.getOpStack().popSlot();
                 newFrame.getLocalVars().setSlot(i, slot);
+            }
+        }
+        //本地方法不支持
+        if (method.isNative()) {
+            if (method.getName().equals("registerNatives")) {
+                thread.popFrame();
+            } else {
+                //暂不支持本地方法
+                throw new RuntimeException("不支持本地方法" + method.getClazz() + "." + method.getName());
             }
         }
     }
