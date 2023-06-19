@@ -54,7 +54,7 @@ public class FieldRef extends MemberRef {
     private void resolveFieldRef() {
         Clazz currentClass = getConstantPool().getClazz();
         resolvedClass();
-        Field resolvedField = lookupField(getResolvedClass(), getName(), getDescriptor());
+        Field resolvedField = findField(getResolvedClass(), getName(), getDescriptor());
         if (resolvedField == null) {
             throw new NoSuchFieldError();
         }
@@ -64,20 +64,20 @@ public class FieldRef extends MemberRef {
         field = resolvedField;
     }
 
-    private Field lookupField(Clazz clazz, String name, String descriptor) {
+    private Field findField(Clazz clazz, String name, String descriptor) {
         for (Field field : clazz.getFields()) {
             if (field.getName().equals(name) && field.getDescriptor().equals(descriptor)) {
                 return field;
             }
         }
         for (Clazz interfaceClazz : clazz.getInterfaces()) {
-            Field field = lookupField(interfaceClazz, name, descriptor);
+            Field field = findField(interfaceClazz, name, descriptor);
             if (field != null) {
                 return field;
             }
         }
         if (clazz.getSuperClazz() != null) {
-            return lookupField(clazz.getSuperClazz(), name, descriptor);
+            return findField(clazz.getSuperClazz(), name, descriptor);
         }
         return null;
     }
