@@ -29,7 +29,7 @@ public class GET_STATIC extends U2IndexInstruction {
         Field field = fieldRef.resolvedField();
         Clazz clazz = field.getClazz();
         if (!clazz.isInitializationFlag()) {
-            frame.revertNextPc();;
+            frame.revertNextPc();
             ClazzInitLogic clazzInitLogic = new ClazzInitLogic();
             clazzInitLogic.initClass(frame.getThread(), clazz);
             return;
