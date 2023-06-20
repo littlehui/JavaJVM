@@ -1,7 +1,7 @@
 package com.lilhui.jvm.rtda.heap;
 
-import com.lilhui.jvm.classfile.*;
-import com.lilhui.jvm.classfile.ClassLoader;
+import com.lilhui.jvm.classfile.ClassFile;
+import com.lilhui.jvm.classfile.ClazzLoader;
 import lombok.Data;
 
 /**
@@ -20,7 +20,7 @@ public class Clazz {
     private ConstantPool constantPool;
     private Field[] fields;
     private Method[] methods;
-    private ClassLoader loader;
+    private ClazzLoader loader;
     private Clazz superClazz;
     private Clazz[] interfaces;
     private int instanceSlotCount;
@@ -28,6 +28,13 @@ public class Clazz {
     private Slots staticVars;
     private boolean initializationFlag;
     // Constructors
+
+    public Clazz() {
+
+    }
+    public boolean isArray() {
+        return false;
+    }
 
     public Clazz(ClassFile cf) {
         this.accessFlags = cf.getAccessFlags();
@@ -42,10 +49,17 @@ public class Clazz {
 
     // Public Methods
     public Object newObject() {
-        Object obj = new Object();
-        obj.setClazz(this);
-        obj.setFileds(new Slots(instanceSlotCount));
+        Object obj = new Object(this);
         return obj;
+    }
+
+    public Object newArray(int count) {
+        throw new UnsupportedOperationException();
+    }
+
+    public Clazz getComponentClazz() {
+        String componentClazzName = ClazzHelper.getComponentClazzName(this.getName());
+        return this.getLoader().loadClass(componentClazzName);
     }
 
     // Access Check
@@ -162,5 +176,52 @@ public class Clazz {
             }
         }
         return null;
+    }
+
+    public boolean isAssignableFrom(Clazz otherClazz) {
+        Clazz s = otherClazz;
+        Clazz t = otherClazz;
+        if (s == t) {
+            return true;
+        }
+        if (!s.isArray()) {
+            if (!s.isInterface()) {
+                if (!t.isInterface()) {
+                    return s.isSubClassOf(t);
+                } else {
+                    return s.isImplements(t);
+                }
+            } else {
+                if (!t.isInterface()) {
+                    return t.isJlObject();
+                } else {
+                    return s.isSubInterfaceOf(t);
+                }
+            }
+        } else {
+            if (!t.isArray()) {
+                if (!t.isInterface()) {
+                    return t.isJlObject();
+                } else {
+                    return t.isJlCloneable() || t.isJioSerializable();
+                }
+            } else {
+                Clazz selfComponentClazz = s.getComponentClazz();
+                Clazz otherComponentClazz = t.getComponentClazz();
+                return selfComponentClazz == otherComponentClazz || otherComponentClazz.isAssignableFrom(s);
+            }
+        }
+    }
+
+    public boolean isJlObject() {
+        return this.getName().equals("java/lang/Object");
+    }
+
+    public boolean isJlCloneable() {
+        return this.getName().equals("java/lang/Cloneable");
+    }
+
+    public boolean isJioSerializable() {
+        return this.getName().equals("java/io/Serializable");
     }
 }

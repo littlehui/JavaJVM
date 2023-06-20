@@ -1,5 +1,6 @@
 package com.lilhui.jvm.instructions.references;
 
+import com.lilhui.jvm.instructions.base.ClazzInitLogic;
 import com.lilhui.jvm.instructions.base.U2IndexInstruction;
 import com.lilhui.jvm.rtda.Frame;
 import com.lilhui.jvm.rtda.OPStack;
@@ -29,6 +30,12 @@ public class GET_STATIC extends U2IndexInstruction {
         FieldRef fieldRef = (FieldRef) frame.getMethod().getClazz().getConstantPool().getConstant(getIndex());
         Field field = fieldRef.resolvedField();
         Clazz clazz = field.getClazz();
+        if (!clazz.isInitializationFlag()) {
+            frame.revertNextPc();;
+            ClazzInitLogic clazzInitLogic = new ClazzInitLogic();
+            clazzInitLogic.initClass(frame.getThread(), clazz);
+            return;
+        }
         OPStack stack = frame.getOpStack();
 
         if (!field.isStatic()) {

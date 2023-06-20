@@ -5,8 +5,8 @@ import com.lilhui.jvm.instructions.base.U2IndexInstruction;
 import com.lilhui.jvm.rtda.Frame;
 import com.lilhui.jvm.rtda.heap.Clazz;
 import com.lilhui.jvm.rtda.heap.ConstantPool;
-import com.lilhui.jvm.rtda.heap.constant.ClazzRef;
 import com.lilhui.jvm.rtda.heap.Object;
+import com.lilhui.jvm.rtda.heap.constant.ClazzRef;
 
 /**
  * @author littlehui
