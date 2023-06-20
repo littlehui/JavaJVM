@@ -40,7 +40,7 @@ public class Thread {
     }
 
     public Frame topFrame() {
-        return stack.pop();
+        return stack.top();
     }
 
     public boolean isStackEmpty() {

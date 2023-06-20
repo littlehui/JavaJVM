@@ -10,7 +10,7 @@ package com.lilhui.jvm;
 public class FibonacciTest {
 
     public static void main(String[] args) {
-        long x = fibonacci(30);
+        long x = fibonacci(5);
         System.out.println(x);
     }
 

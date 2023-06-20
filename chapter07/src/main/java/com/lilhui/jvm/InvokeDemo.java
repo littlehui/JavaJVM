@@ -16,7 +16,7 @@ public class InvokeDemo implements Runnable {
         InvokeDemo.staticMethod(); // invokestatic
         InvokeDemo demo = new InvokeDemo(); // invokespecial
         demo.instanceMethod(); // invokespecial
-        //super.equals(null); // invokespecial
+        super.equals(null); // invokespecial
         this.run(); // invokevirtual
         ((Runnable) demo).run(); // invokeinterface
     }
