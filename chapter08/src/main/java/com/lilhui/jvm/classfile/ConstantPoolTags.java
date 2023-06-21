@@ -19,7 +19,7 @@ public class ConstantPoolTags {
     public static final byte CONSTANT_DOUBLE = 6;
     public static final byte CONSTANT_NAME_AND_TYPE = 12;
     public static final byte CONSTANT_UTF_8 = 1;
-    // CONSTANT_MethodHandle       = 15
-    // CONSTANT_MethodType         = 16
-    // CONSTANT_InvokeDynamic      = 18
+    public static final byte CONSTANT_METHOD_HANDLE = 15;
+    public static final byte CONSTANT_METHOD_TYPE = 16;
+    public static final byte CONSTANT_INVOKE_DYNAMIC_INFO = 18;
 }

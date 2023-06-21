@@ -31,7 +31,7 @@ public class Jvm {
         String className = cmd.getClassPath().replace(".", "/");
         Clazz clazz = loader.loadClass(className);
         Method mainMethod = getMainMethod(clazz);
-        Interpreter.interpret(mainMethod, cmd.isVerboseFlag());
+        Interpreter.interpret(mainMethod, cmd.isVerboseFlag(), cmd.getArgs());
     }
 
     private static Method getMainMethod(Clazz clazz) {

@@ -45,6 +45,8 @@ public class ConstantPool {
                 constants[i] = Constants.newMethodRef(this, cpInfo);
             } else if (cpInfo instanceof ConstantInterfaceMethodrefInfo) {
                 constants[i] = Constants.newInterfaceMethodRef(this, cpInfo);
+            } else if (cpInfo instanceof ConstantInvokeDynamicInfo) {
+                constants[i] = Constants.newConstantInvokeDynamic(this, cpInfo);
             }
         }
     }

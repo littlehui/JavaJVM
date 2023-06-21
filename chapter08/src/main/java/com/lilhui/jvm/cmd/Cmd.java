@@ -20,7 +20,7 @@ public class Cmd {
     private boolean versionFlag;
     private String cpOption;
     private String classPath;
-    private List<String> args;
+    private String[] args;
     private String xjreOption;
     private boolean verboseFlag;
 
@@ -60,7 +60,8 @@ public class Cmd {
                     break;
                 default:
                     cmd.classPath = arg;
-                    cmd.args = arguments.subList(i + 1, arguments.size());
+                    List<String> argsList = arguments.subList(i + 1, arguments.size());
+                    cmd.args = argsList.toArray(new String[argsList.size()]);
                     return cmd;
             }
         }

@@ -1,11 +1,13 @@
 package com.lilhui.jvm.interpreter;
 
+import com.lilhui.jvm.classfile.ClazzLoader;
 import com.lilhui.jvm.instructions.Instructions;
 import com.lilhui.jvm.instructions.base.CodeReader;
 import com.lilhui.jvm.instructions.base.Instruction;
 import com.lilhui.jvm.rtda.Frame;
 import com.lilhui.jvm.rtda.Thread;
-import com.lilhui.jvm.rtda.heap.Method;
+import com.lilhui.jvm.rtda.heap.*;
+import com.lilhui.jvm.rtda.heap.Object;
 
 import java.util.Arrays;
 
@@ -17,16 +19,28 @@ import java.util.Arrays;
  */
 public class Interpreter {
 
-    public static void interpret(Method method, boolean logInst) {
+    public static void interpret(Method method, boolean logInst, String[] args) {
         Thread thread = new Thread();
         Frame frame = thread.newFrame(method);
         thread.pushFrame(frame);
+        Object jvmArgs = createArgsArray(method.getClazz().getLoader(), args);
+        frame.getLocalVars().setRef(0, jvmArgs);
         try {
             run(thread, method.getCode(), logInst);
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             catchErr(thread, throwable);
         }
+    }
+
+    private static Object createArgsArray(ClazzLoader loader, String[] args) {
+        Clazz strClazz = loader.loadClass("java/lang/String");
+        ArrayObject argsArr = (ArrayObject) strClazz.getArrayClazz().newArray(args.length);
+        Object[] refs = argsArr.refs();
+        for (int i=0; i<args.length; i++) {
+            refs[i] = StringPool.stringToJvmString(loader, args[i]);
+        }
+        return argsArr;
     }
 
     private static void run(Thread thread, byte[] code, boolean logInst) {

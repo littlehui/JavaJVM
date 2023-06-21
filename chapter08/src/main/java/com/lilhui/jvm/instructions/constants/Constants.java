@@ -6,11 +6,11 @@ import com.lilhui.jvm.instructions.base.U1IndexInstruction;
 import com.lilhui.jvm.instructions.base.U2IndexInstruction;
 import com.lilhui.jvm.rtda.Frame;
 import com.lilhui.jvm.rtda.OPStack;
+import com.lilhui.jvm.rtda.heap.Clazz;
 import com.lilhui.jvm.rtda.heap.Constant;
-import com.lilhui.jvm.rtda.heap.constant.ConstantDouble;
-import com.lilhui.jvm.rtda.heap.constant.ConstantFloat;
-import com.lilhui.jvm.rtda.heap.constant.ConstantInteger;
-import com.lilhui.jvm.rtda.heap.constant.ConstantLong;
+import com.lilhui.jvm.rtda.heap.StringPool;
+import com.lilhui.jvm.rtda.heap.constant.*;
+import com.lilhui.jvm.rtda.heap.Object;
 
 /**
  * @author littlehui
@@ -242,11 +242,16 @@ public class Constants {
     private static void ldc(Frame frame, int index) {
         Constant constant = frame.getMethod().getClazz().getConstantPool().getConstant(index);
         OPStack stack = frame.getOpStack();
+        Clazz clazz = frame.getMethod().getClazz();
         if (constant instanceof ConstantInteger) {
             stack.pushInt(((ConstantInteger) constant).getValue());
         }
         if (constant instanceof ConstantFloat) {
             stack.pushFloat(((ConstantFloat) constant).getValue());
+        }
+        if (constant instanceof ConstantString) {
+            Object internedStr = StringPool.stringToJvmString(clazz.getLoader(), constant.getValue());
+            stack.pushRef(internedStr);
         }
     }
 

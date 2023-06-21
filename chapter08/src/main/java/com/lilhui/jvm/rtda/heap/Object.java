@@ -33,4 +33,17 @@ public class Object {
     public boolean isInstanceOf(Clazz clazz) {
         return this.getClazz().isAssignableFrom(clazz);
     }
+
+    public void setRefChar(String name, String descriptor, Object ref) {
+        Field field = this.getClazz().getField(name, descriptor, false);
+        Slots slots = (Slots)this.getData();
+        slots.setRef(field.getSlotId(), ref);
+    }
+
+    public Object getRefChar(String name, String descriptor) {
+        Field field = this.getClazz().getField(name, descriptor, false);
+        Slots slots = (Slots)this.getData();
+        Object ref = slots.getRef(field.getSlotId());
+        return ref;
+    }
 }

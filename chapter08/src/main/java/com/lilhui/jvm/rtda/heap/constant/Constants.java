@@ -37,4 +37,8 @@ public class Constants {
     }
 
 
+    public static Constant newConstantInvokeDynamic(ConstantPool constantPool, ConstantInfo cpInfo) {
+
+        return null;
+    }
 }

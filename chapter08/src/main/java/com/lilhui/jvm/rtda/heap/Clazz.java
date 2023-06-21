@@ -224,4 +224,26 @@ public class Clazz {
     public boolean isJioSerializable() {
         return this.getName().equals("java/io/Serializable");
     }
+
+    public Field getField(String name, String descriptor, boolean isStatic) {
+        for (Clazz c = this; c != null; c = c.getSuperClazz()) {
+            for (Field field : c.fields) {
+                if (field.isStatic() == isStatic && field.getName().equals(name) && field.getDescriptor().equals(descriptor)) {
+                    return field;
+                }
+            }
+        }
+        return null;
+    }
+
+    public ArrayClazz getArrayClazz() {
+        String descriptor = "";;
+        if (this.getName().charAt(0) == '[') {
+            descriptor = this.getName();
+        } else {
+            descriptor = "L" + this.getName() + ";";
+        }
+        String arrayClazzName = "[" + descriptor;
+        return (ArrayClazz) this.getLoader().loadClass(arrayClazzName);
+    }
 }

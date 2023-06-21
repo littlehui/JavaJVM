@@ -7,7 +7,7 @@
 1. 普通类的初始化是通过加载类字节码，解析成常量池初始化。数组类常的加载，通过固定设置。
 2. ArrayClazz在创建对象时需要用ArrayObject，否则会报错。
 3. PUT_STATIC,NEW,INVOKE_STATIC,GET_STATIC指令执行时会判断clazz是否已经初始化。如果没有初始化，需要进行初始化，并进行return.如果没有return会导致父frame的nextpc被回退。后面的方法执行后，还会在执行一次。
-
+4. 执行带参数的main函数会执行
 ## 执行过程
 
 - BubbleSortTest
@@ -3676,6 +3676,22 @@ PC:9 com/lilhui/jvm/BubbleSortTest.printArray.([I)Vclass com.lilhui.jvm.instruct
 PC:31 com/lilhui/jvm/BubbleSortTest.printArray.([I)Vclass com.lilhui.jvm.instructions.control.Controls$RETURN
 PC:103 com/lilhui/jvm/BubbleSortTest.main.([Ljava/lang/String;)Vclass com.lilhui.jvm.instructions.control.Controls$RETURN
 Disconnected from the target VM, address: '127.0.0.1:56761', transport: 'socket'
+
+Process finished with exit code 0
+
+```
+
+- PrintArgs
+
+```
+-cp "/Users/littlehui/WorkSpaces/Home/jvm/JavaJVM/chapter08/target/classes" com.lilhui.jvm.PrintArgs foo bar 你好啊，世界
+
+/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/bin/java -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:52260,suspend=y,server=n -javaagent:/Users/littlehui/Library/Caches/JetBrains/IntelliJIdea2021.2/captureAgent/debugger-agent.jar -Dfile.encoding=UTF-8 -classpath /Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/lib/packager.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home/lib/tools.jar:/Users/littlehui/WorkSpaces/Home/jvm/JavaJVM/chapter08/target/classes:/Users/littlehui/Software/repository/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar com.lilhui.jvm.Jvm -cp /Users/littlehui/WorkSpaces/Home/jvm/JavaJVM/chapter08/target/classes com.lilhui.jvm.PrintArgs foo bar 你好啊，世界
+Connected to the target VM, address: '127.0.0.1:52260', transport: 'socket'
+foo
+bar
+你好啊，世界
+Disconnected from the target VM, address: '127.0.0.1:52260', transport: 'socket'
 
 Process finished with exit code 0
 

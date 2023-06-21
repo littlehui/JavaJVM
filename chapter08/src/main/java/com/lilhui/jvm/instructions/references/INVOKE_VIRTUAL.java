@@ -7,6 +7,7 @@ import com.lilhui.jvm.rtda.OPStack;
 import com.lilhui.jvm.rtda.heap.ConstantPool;
 import com.lilhui.jvm.rtda.heap.Method;
 import com.lilhui.jvm.rtda.heap.Object;
+import com.lilhui.jvm.rtda.heap.StringPool;
 import com.lilhui.jvm.rtda.heap.constant.MethodLookup;
 import com.lilhui.jvm.rtda.heap.constant.MethodRef;
 
@@ -80,7 +81,9 @@ public class INVOKE_VIRTUAL extends U2IndexInstruction {
                 System.out.printf(stack.popDouble() + "");
                 break;
             case "(Ljava/lang/String;)V":
-                System.out.printf("%s%n", stack.popRef());
+                Object jvmStr = stack.popRef();
+                String str = StringPool.jvmStrToString(jvmStr);
+                System.out.printf("%s%n", str);
                 break;
             default:
                 throw new RuntimeException("println: " + descriptor);

@@ -2,6 +2,7 @@ package com.lilhui.jvm.classfile;
 
 import com.lilhui.jvm.classpath.ClassPath;
 import com.lilhui.jvm.rtda.heap.*;
+import com.lilhui.jvm.rtda.heap.Object;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -157,14 +158,21 @@ public class ClazzLoader {
             case "S":
             case "I":
                 staticVars.setInt(index, constant.getValue());
+                break;
             case "J":
                 staticVars.setLong(index, constant.getValue());
+                break;
             case "F":
                 staticVars.setFloat(index, constant.getValue());
+                break;
             case "D":
                 staticVars.setDouble(index, constant.getValue());
+                break;
             case "Ljava/lang/String;":
-                throw new RuntimeException("还未实现的静态类型。String");
+                String str = constant.getValue();
+                Object jvmStr = StringPool.stringToJvmString(clazz.getLoader(), str);
+                staticVars.setRef(index, jvmStr);
+                break;
         }
     }
 
