@@ -9,7 +9,7 @@ import lombok.Data;
  * @date 2023/6/9 15:24
  */
 @Data
-public class Object {
+public class Object implements Cloneable {
     // Fields and methods of the Object class in Java
     // ...
     private Clazz clazz;
@@ -47,5 +47,10 @@ public class Object {
         Slots slots = (Slots)this.getData();
         Object ref = slots.getRef(field.getSlotId());
         return ref;
+    }
+
+    @Override
+    public clone() {
+        return this.clone();
     }
 }

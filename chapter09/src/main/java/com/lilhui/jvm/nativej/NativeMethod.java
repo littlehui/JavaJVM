@@ -8,9 +8,7 @@ import com.lilhui.jvm.rtda.Frame;
  * @description TODO
  * @date 2023/6/27 16:44
  */
-public class NativeMethod {
+public interface NativeMethod {
 
-    public void invoke(Frame frame) {
-        //TODO do something
-    }
+    public void invoke(Frame frame) throws Exception;
 }
