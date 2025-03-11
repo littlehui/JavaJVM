@@ -50,7 +50,7 @@ public class Object implements Cloneable {
     }
 
     @Override
-    public clone() {
+    public Object clone() {
         return this.clone();
     }
 }

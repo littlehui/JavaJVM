@@ -3,6 +3,7 @@ package com.lilhui.jvm.nativej.java.lang;
 import com.lilhui.jvm.nativej.NativeMethod;
 import com.lilhui.jvm.nativej.Registry;
 import com.lilhui.jvm.rtda.Frame;
+import com.lilhui.jvm.rtda.heap.Clazz;
 
 /**
  * @author littlehui
@@ -32,8 +33,8 @@ public class Object {
         @Override
         public void invoke(Frame frame) throws Exception {
             com.lilhui.jvm.rtda.heap.Object object = frame.getLocalVars().getRef(0);
-            int hash = System.identityHashCode(thisObj);
-            frame.getOperandStack().pushInt(hash);
+            int hash = System.identityHashCode(object);
+            frame.getOpStack().pushInt(hash);
         }
     }
 
@@ -42,12 +43,12 @@ public class Object {
         @Override
         public void invoke(Frame frame) throws Exception {
             com.lilhui.jvm.rtda.heap.Object object = frame.getLocalVars().getRef(0);
-            Clazz clazz = thisObj.getClazz();
+            Clazz clazz = object.getClazz();
             Clazz cloneableClazz = frame.getMethod().getClazz().getLoader().loadClass("java/lang/Cloneable");
-            if (!cloneableClass.isAssignableFrom(clazz)) {
+            if (!cloneableClazz.isAssignableFrom(clazz)) {
                 throw new CloneNotSupportedException();
             }
-            frame.getOperandStack().pushRef(object.clone());
+            frame.getOpStack().pushRef(object.clone());
         }
     }
 }

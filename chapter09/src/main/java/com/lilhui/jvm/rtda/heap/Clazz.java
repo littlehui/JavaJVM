@@ -172,7 +172,7 @@ public class Clazz {
         for (Method method : methods) {
             if (method.isSynthetic()) {
                 if (method.getName().equals("<clinit>")
-                && method.getDescriptor().equals("()V")) {
+                        && method.getDescriptor().equals("()V")) {
                     return method;
                 }
             }
