@@ -1,4 +1,4 @@
-package com.lilhui.jvm.stack;
+package com.lilhui.jvm.utils.stack;
 
 import com.lilhui.jvm.typedef.TypeDef.U4;
 
