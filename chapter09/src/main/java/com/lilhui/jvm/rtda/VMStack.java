@@ -1,7 +1,7 @@
 package com.lilhui.jvm.rtda;
 
-import com.lilhui.jvm.stack.Stack;
 import com.lilhui.jvm.typedef.TypeDef.U4;
+import com.lilhui.jvm.util.stack.Stack;
 import lombok.Data;
 
 /**

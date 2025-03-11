@@ -3,7 +3,6 @@ package com.lilhui.jvm.classfile.constant;
 import com.lilhui.jvm.classfile.BytecodeReader;
 import com.lilhui.jvm.classfile.ConstantPoolInfo;
 import com.lilhui.jvm.classfile.ConstantPoolTags;
-import com.sun.org.apache.bcel.internal.classfile.ConstantMethodType;
 
 public class ConstantInfos {
 
