@@ -11,7 +11,10 @@ public class BubbleSortTest {
 
     public static void main(String[] args) {
         int[] arr = {22, 84, 77, 11, 95, 9, 78, 56, 36, 97, 65, 36, 10, 24, 92, 48};
+        System.out.println("原来的数组排序是：");
+        printArray(arr);
         bubbleSort(arr);
+        System.out.println("冒泡排序后是：");
         printArray(arr);
     }
 
