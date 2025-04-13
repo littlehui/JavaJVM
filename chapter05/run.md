@@ -1,4 +1,8 @@
-java -cp "F:\InteliJ\Works\jvm\MyJvm\my-jvm-java\chapter05\target\classes" com.lilhui.jvm.GaussTest
+
+```shell
+java -cp chapter05/target/chapter05-1.0-SNAPSHOT.jar com.lilhui.jvm.Jvm -cp "chapter05/target/classes" com.lilhui.jvm.GaussTest
+```
+
 
 ```
 Connected to the target VM, address: '127.0.0.1:56146', transport: 'socket'
