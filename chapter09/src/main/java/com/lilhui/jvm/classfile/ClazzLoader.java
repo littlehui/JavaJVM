@@ -174,7 +174,9 @@ public class ClazzLoader {
     }
 
     private void link(Clazz clazz) {
+        //校验
         verify(clazz);
+        //初始化
         prepare(clazz);
     }
 
@@ -183,8 +185,11 @@ public class ClazzLoader {
     }
 
     private void prepare(Clazz clazz) {
+        //计算实例实例字段的SlotIds
         this.calculateInstanceFieldSlotIds(clazz);
+        //计算静态字段的SlotId
         this.calculateStaticFieldSlotIds(clazz);
+        //申请并初始化静态变量
         this.allocateAndInitStaticVars(clazz);
     }
 
